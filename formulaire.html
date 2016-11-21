@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<title>Formulaire d'inscription</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="style2.css" rel="stylesheet" type="text/css" media="screen" />
+<meta http-equiv="Content-Language" content="fr" />
+<meta name="robots" content="all" /> 
+<meta name="Copyright" content="&copy; 2013 ABVL" />
+<meta name="author" content="Aurélien Houssay" /> 
+<meta name="reply-to" content ="abvl@abvl.fr" /> 
+<meta name="description" content="vente de livres"/> 
+<meta name="keywords" content="livres, dictionnaire, encyclopédie"/> 
+<script type="text/javascript" >
+    function validerFormulaire() {
+    if (formulaire.nom.value == "") {
+        alert("Entrez votre nom !"); 
+		formulaire.nom.focus();
+        return false;
+    }
+
+	if (formulaire.prenom.value == "") {
+        alert("Entrez votre prénom !"); 
+		formulaire.prenom.focus();
+        return false;
+    }
+	
+	if (formulaire.age.value == "") {
+        alert("Entrez votre âge !"); 
+		formulaire.age.focus();
+        return false;
+    }
+	
+	if (formulaire.age.value.length > 3) {
+       alert ("Veuillez entrer votre âge !");
+       formulaire.age.focus();
+       return false;
+    }
+	
+	var chiff = 1;
+    for (i=0;i<formulaire.age.value.length;++i)
+    if (formulaire.age.value.charAt(i) < "0"
+    || formulaire.age.value.charAt(i) > "9")
+    chiff = -1;
+    if (chiff == -1) {
+    alert ("Veuillez entrer votre âge !");
+    formulaire.age.value="";   
+    formulaire.age.focus();
+    return false;
+    }
+	
+	if (formulaire.tel.value == "") {
+        alert("Entrez votre numéro !"); 
+		formulaire.tel.focus();
+        return false;
+    }
+	if (formulaire.tel.value.length != 10) {
+       alert ("Veuillez taper un numéro correct !");
+       formulaire.tel.focus();
+       return false;
+    }
+	
+    var chiff = 1;
+    for (i=0;i<formulaire.tel.value.length;++i)
+    if (formulaire.tel.value.charAt(i) < "0"
+    || formulaire.tel.value.charAt(i) > "9")
+    chiff = -1;
+    if (chiff == -1) {
+    alert ("Veuillez taper un numéro correct !");
+    formulaire.tel.value="";   
+    formulaire.tel.focus();
+    return false;
+    }
+	
+	if (formulaire.email.value == "") {
+        alert("Entrez votre adresse mail !"); 
+		formulaire.email.focus();
+        return false;
+    }
+	
+    else {					
+		alert("Inscription validée.");
+		return true ;	
+	}
+	
+	function setCookie(name, value, exdays) {
+  var exdate = new Date();
+  exdate.setDate(exdate.getDate() + exdays);
+  var c_value = escape(value) + 
+    ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+  document.cookie = name + "=" + value;
+}
+
+function getCookie(name) {
+  var i, x, y, ARRcookies = document.cookie.split(";");
+  for (i = 0; i < ARRcookies.length; i++)   {
+    x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+    y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+    x = x.replace(/^\s+|\s+$/g, "");
+    if (x == name)     {
+      return unescape(y);
+    }
+  }
+  return null;
+}
+
+}
+</script>
+
+</head>
+
+<body>	
+<div id="header">
+<br/>
+Site de l'ABVL, agence de vente en ligne de livres<br/>
+<span class="petit">(dictionnaires, encyclopédies)</span>
+</div>
+
+<div id="menu">
+        <a title="Présentation" href="presentation.html">Présentation</a><br/>
+        <a title="Articles" href="articles.html">Articles</a><br/>
+		<a title="Formulaire" href="formulaire.html">Formulaire</a><br/>
+</div>	
+	
+<div id="contenu">
+<form id="formulaire" method="post" action="#" onsubmit="return validerFormulaire()" >
+<br/>
+<h2>Pour faire votre commande ou vous tenir au courant des nouveautés, veuillez remplir le formulaire ci-dessous.
+</h2>
+<p>Vos données :</p>
+
+<fieldset>
+<p>
+        <label for ="nom">Nom :</label>
+		<input type="text" id="nom" />
+	</p>
+	<p>
+		<label for="prenom">Prénom :</label>
+		<input type="text" id="prenom" />
+	</p>
+	<p>
+	    <label for="age">Age :</label>
+		<input type="number" id="age" />
+	</p>
+	<p>
+	    <label for="tel">Téléphone :</label>
+		<input type="number" id="tel" />
+	</p>
+	<p><label for="email">e-mail :</label> 
+	<input type="text" id="email" /></p>
+	<legend>Inscription</legend>
+	<p>
+		<br />
+			<input type="checkbox" class="bouton" id="auth1" required="required" /><label for="auth1">Je m'inscris</label>
+		<div class="tx-guestbook-field">
+		<legend>Votre message éventuel :</legend>
+		<br/>
+		<label for="message"><span class="tx-guestbook-form-obligationfield"></span></label>
+		<textarea name="tx_veguestbook_pi1[entry]" class="tx-guestbook-form-textarea" rows="4" cols="25" id="message">Site intéressant et utile !</textarea>
+	<div class="tx-guestbook-field">
+		<input type="hidden" name="id" value="###PID###" />
+		<input type="hidden" name="tx_veguestbook_pi1[submitted]" value="1" />
+		<input type="submit" value="Envoyer" class="tx-guestbook-submit" />
+</fieldset></div>
+</form>
+</body>
+	<div id="foot2">
+		<div id="left">	
+		<div id="right"> <p id="retour"><a href="index.html">Retour à l'accueil</a></p> </div>
+				<p id="copyright">
+					<a href="mailto:abvl@abvl.fr">&copy; 2013, ABVL</a>
+				</p>
+		</div>
+	</div>
